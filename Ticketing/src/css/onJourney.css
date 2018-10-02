@@ -1,0 +1,27 @@
+.onJourney .box{
+    height:80px;
+    width:90%;
+    margin:0px 0px 10px 20px;
+    padding:5px 0px 0px 40px;
+    font-size:15px
+}
+
+.onJourney .box1{
+
+    background-color: rgba(143, 143, 143, 0.788)
+}
+
+.onJourney .box2{
+ 
+    background-color:  rgba(143, 143, 143, 0.568)
+}
+
+.onJourney .box3{
+
+    background-color:  rgba(143, 143, 143, 0.24)
+}
+
+.onJourney .btn{
+    width:40%;
+    background-color: gray  
+}

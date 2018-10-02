@@ -1,0 +1,24 @@
+.busStop .searchButton{
+
+    background-color: rgba(219, 32, 32, 0.877);
+    color:black;
+    padding:10px;
+    width:90%;
+    height: 75px;
+    margin:10px 0px 10px 0px;
+    font-size:20px;
+}
+.busStop .submitButton{
+
+    background-color: rgba(219, 32, 32, 0.877);
+    color:black;
+    padding:10px;
+    width:50%;
+    height: 75px;
+    margin:10px 0px 10px 0px;
+    font-size:20px;
+}
+
+.div{
+    background-color: aqua;
+}

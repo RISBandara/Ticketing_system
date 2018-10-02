@@ -1,0 +1,45 @@
+.recharge .box{
+    height:90px;
+    width:100%;
+    margin:10px 0px 10px 0px;
+    background-color: rgba(214, 212, 212, 0.801);
+    font-size: 17px ;
+    padding:20px
+}
+
+.recharge .groupButton{
+    margin:0px 0px 0px 65px;
+    padding:10px;
+}
+
+.recharge .groupButton button{
+    padding:10px;
+    border:1px solid white;
+    background-color: gray;
+}
+
+.recharge .single{
+    width:80%;
+    height:40px;
+}
+
+.recharge .headerr{
+    height:70px;
+    width:100%;
+    background-color: darkgray;
+    margin:-20px 0px 0px 0px;
+}
+
+.recharge .headerText{
+    padding:20px 0px 0px 0px;
+}
+
+.recharge .getCode{
+    margin:0px 0px 0px 55%;
+    padding:10px;
+
+}
+.recharge .phoneText{
+    margin:10px 0px 0px 50px;
+
+}
