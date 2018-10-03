@@ -9,7 +9,7 @@ export default class StartHome extends Component{
 
         this.state = {
             // login customer imformation goes here
-            customer:{"name" : "John Doe" , "Address": "Colombo,Sri Lanka", "phone" : "07756984523"},
+            customer:{"name" : "John Kasun" , "Address": "Colombo,Sri Lanka", "phone" : "07756984523"},
             Account:{"balance" : "250"},
         }
     }
@@ -41,6 +41,8 @@ export default class StartHome extends Component{
                     <p>{this.state.customer.Address}</p>    
                 </center>
             </div>
+
+        
             <button className="btn col-sm-12 boxButton" onClick={event=>this.onStrtJourney(event)}>Start Journey</button>
             <button className="btn col-sm-12 boxButton" onClick={event=>this.onRecharge(event)}>Recharge Account</button>
             <button className="btn col-sm-12 boxButton" onClick={event=>this.onHistory(event)}>Journey History</button>

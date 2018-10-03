@@ -29,26 +29,16 @@ class App extends Component {
              
             <div>
                 <Switch>
-                 
                     <Route path="/home" exact static component = {Start} />
                     <Route path="/startJourney" exact static component = {startJourney} />
                     <Route path="/Recharge" exact static component = {Recharge} />
                     <Route path="/History" exact static component = {History} />
                     <Route path="/onJourney" exact static component = {Onjourney} />
-
-                  
                     <Route path="/end" exact static component = {End}/>
                     <Route path="/endOnLoan" exact static component = {EndOnLoan}/>
                     <Route path="/endQR" exact static component = {EndJourneyQR}/>
-
-                  
                    <Route path="/busfareMain" exact static component = {busfaremain} />
-             
-                    
-                    
                     <Route path="/RouteHandler" exact static component = {RouteHandler} />
-
-                    
                     <Route path="/BusStopHandler" exact static component = {BusStopHandler} />
                     <Route path="/TMmain" exact static component = {TransportManagerMain} />
                 </Switch>

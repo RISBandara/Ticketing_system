@@ -2,127 +2,24 @@
 import React,{Component} from 'react';
 import PropTypes from "prop-types";
 import axios from 'axios';
-//implement Student_FormI_1 component
+
 export default class busfareHandler extends Component{
 
-    static get propTypes() {
-        return {
-                    busfare: PropTypes.array,
-                    addFareDetails: PropTypes.func,
-                    routeno: PropTypes.string,
-                    routename: PropTypes.string,
-                    currentfare: PropTypes.string,
-                    percentage: PropTypes.string,
-                    busfair: PropTypes.string
-           
-
-        }
-
-    }
+  
 
     constructor(props) {
         super(props);
-        this.busfare = this.props.busfare;
-    }
-
-    //implement methods to set the values given as user inputs.
-   
-    handleChange = event => {
-        this.setState({ routeno: event.target.value });
-        
-      }
     
-
-
-    onRouteNoChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.routeno = event.target.value;
-
-
-    }
-    onroutenameChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.routename = event.target.value;
-
     }
 
-    oncurrentfareChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.currentfare = event.target.value;
-
-    }
-
-    onupdatevalueChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.percentage = event.target.value;
-
-    }
-    onnewfareChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.busfair = event.target.value;
-
-    }
-    ondateChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.busfair = event.target.value;
-
-    }
-     handleSubmit = event => {
-    event.preventDefault();
-
-    axios.get(`https://localhost:3002/busfares/${this.state.routeno}`)
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-  }
-
-//After submitting the details, set the values using addFormI_1Details method.
-    onSubmit(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (
-            this.routeno &&
-            this.routename &&
-            this.currentfare &&
-            this.percentage &&
-            this.busfair ) {
-                
-                this.props.addFareDetails({
-                                            routeno: this.routeno,
-                                            routename: this.routename,
-                                            currentfare:this.currentfare,
-                                            percentage:this.percentage,
-                                            busfair:this.busfair });
-
-            this.setState({
-                routeno:'',
-                routename: '',
-                currentfare :'',
-                percentage:'',
-                busfair :''
-            });
-
-            alert("Successfully Saved.....!")
-
-        }
-    }
-
-///render the formI-1 fields
     render(){
         this.busfare = this.props.busfare;
         return(
             <div className="col-md-4 col-md-offset-4">
-                <form className="form-horizontal" onSubmit={this.handleSubmit} >
+                
                     <fieldset>
                         <center>
-                            <legend><h4>Add new Bus Fare Details</h4></legend>
+                            <legend><h4>Change Bus Fare</h4></legend>
                         </center>
 
                             <div className="form-group row">
@@ -197,7 +94,7 @@ export default class busfareHandler extends Component{
                                 </table>
                             </div>
                     </fieldset>
-                </form>
+               
             </div>
 
 

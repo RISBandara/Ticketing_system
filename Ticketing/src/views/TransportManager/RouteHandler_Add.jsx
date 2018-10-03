@@ -4,70 +4,15 @@ import PropTypes from "prop-types";
 import '../../css/startJourney.css';
 import '../../css/Route.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 //implement RouteHandler_Add component
 export default class RouteHandler_Add extends Component{
 
-    static get propTypes() {
-        return {
-            addStopsDetails: PropTypes.func,
-            routeNo: PropTypes.string,
-            routeName: PropTypes.string,
-            routeDistance: PropTypes.string,
-            busFair: PropTypes.string,
-            starting_point: PropTypes.string,
-            ending_point: PropTypes.string
-           }
-    }
+    
     constructor(props) {
         super(props);
-    }
-    //implement methods to set the values given as user inputs.
-    onRouteNoChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.routeNo = event.target.value;
-    }
-    onRouteNameChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.routeName = event.target.value;
-    }
-    onrouteDistanceChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.routeDistance = event.target.value;
-    }
-    onbusfairChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.busFair = event.target.value;
-    }
-    onstartingPointChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.starting_point = event.target.value;
-    }
-    onendpointChange(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.ending_point = event.target.value;
-    }
-//After submitting the details, set the values using addFormI_1Details method.
-    onSubmit(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this.routeNo &&
-            this.routeName &&
-            this.previous &&
-            this.new &&
-            this.next ) {
-            this.props.addFormI_1Details({
-                routeNo:this.routeNo,
-                routeName: this.routeName,
-                previous:this.previous,
-                new:this.new,
-                next:this.next
-            });
+    
+   
             this.setState({
                 routeNo:'',
                 routeName: '',
@@ -75,14 +20,51 @@ export default class RouteHandler_Add extends Component{
                 new:'',
                 next :''
             });
-            alert("Successfully inserted.....!")
-        }
+            
+        
     }
+
+    handleClick(){
+        var Routeno = this.refs.routeno.value;
+        var Routename = this.refs.routename.value;
+        var Routeno = this.refs.routeno.value;
+        var Routedistance = this.refs.routedistance.value;
+        var Busfare = this.refs.busfare.value;
+        var Startpoint = this.refs.startpoint.value;
+        var Endpoint = this.refs.endpoint.value;
+        
+        axios.get("http://localhost:8000/assign/" + Routeno).then((res) => {
+
+            if (res.data.length !== 0) {
+                alert("Student is already registered.")
+            }
+            else {
+
+                var assignment = {"irouteno":Routeno,"iroutename":Routename,"ibusfare":Busfare,"istartpoint":Startpoint,"iendpoint":Endpoint,"idistance":Routedistance};
+        
+                this.setState({assign:assignment});
+        
+               //check user fields
+                if(Routeno==='' || Routename===''|| Routedistance==='' || Startpoint==='' || Endpoint===''||Busfare===''){
+                    alert('Enter Correct details');
+                }
+                else{
+                    
+                    axios.post('http://localhost:8000/assign',assignment).then(function(data){
+                    
+                    alert("Assign Succesfully !!!");
+                });
+                        
+                    }
+        }
+        })
+
+    };
 //render the Route form fields
     render(){
         return(
             <div className="col-md-4 col-md-offset-4">
-                <form className="form-horizontal" onSubmit={event => this.onSubmit(event)} >
+                <form className="form-horizontal" >
                     <fieldset>
                         <center>
                             <legend><h4>Add new Bus Route Details</h4></legend>
@@ -94,58 +76,51 @@ export default class RouteHandler_Add extends Component{
                                         <td>
                                             <div className="form-group col-md-9" style={{width:"100%" , margin:"0px 0px 0px -10px"}} >
                                                 <label htmlFor="exampleInputEmail1">Route No:</label><br/>
-                                                <input type="text" size={500}  className="form-control" required="required" id="pid" aria-describedby="emailHelp" placeholder="Enter Route No Here" onChange={event => this.onRouteNoChange(event)}/><br/>
+                                                <input type="text" size={500} ref='routeno' className="form-control" required="required" id="pid" aria-describedby="emailHelp" placeholder="Enter Route No Here"/><br/>
                                             </div>
                                         </td>
                                     </tr>
                                      <tr>
                                         <div className="form-group col-md-12">
                                             <label htmlFor="exampleInputEmail1">Route Name:</label><br/>
-                                            <input type="text" required="required" className="form-control" id="pid" aria-describedby="emailHelp" placeholder="Enter Route Name Here" 
-                                            onChange={event => this.onRouteNameChange(event)}/><br/>
+                                            <input type="text" required="required" ref='routename' className="form-control" id="pid" aria-describedby="emailHelp" placeholder="Enter Route Name Here" /><br/>
                                         </div>
                                     </tr>
                                     <tr>
                                         <div className="form-group col-md-12">
                                             <label htmlFor="exampleInputEmail1">Route Distance:</label>
                                             <input type="text" required="required" className="form-control" id="pid" 
-                                            aria-describedby="emailHelp" placeholder="Enter Route Distance Here" 
-                                            onChange={event => this.onrouteDistanceChange(event)}/><br/>
+                                            aria-describedby="emailHelp" ref='routedistance' placeholder="Enter Route Distance Here" /><br/>
                                         </div>
                                     </tr>
                                     <tr>
                                         <div className="form-group col-md-12">
                                             <label htmlFor="exampleInputEmail1">Bus Fare:</label>
-                                            <input type="text" required="required" className="form-control" id="pid" 
+                                            <input type="text" required="required" ref='busfare' className="form-control" id="pid" 
                                             aria-describedby="emailHelp" placeholder="Enter Bus Fare Here" 
-                                            onChange={event => this.onbusfairChange(event)}/><br/>
+                                          /><br/>
                                         </div>
                                     </tr>
                                     <tr>
                                         <div className="form-group col-md-12">
                                             <label htmlFor="exampleInputEmail1">Starting Point:</label>
-                                            <input type="text" required="required" className="form-control" id="pid" 
+                                            <input type="text" required="required" ref='startpoint' className="form-control" id="pid" 
                                             aria-describedby="emailHelp" placeholder="Enter Starting Point Here" 
-                                            onChange={event => this.onstartingPointChange(event)}/><br/>
+                                          /><br/>
                                         </div>
                                     </tr>
                                     <tr>
                                         <div className="form-group col-md-12">
                                             <label htmlFor="exampleInputEmail1">End Point:</label>
-                                            <input type="text" required="required" className="form-control" id="pid" 
+                                            <input type="text" required="required" ref='endpoint' className="form-control" id="pid" 
                                             aria-describedby="emailHelp" placeholder="Enter End Point Here" 
-                                            onChange={event => this.onendpointChange(event)}/><br/>
+                                           /><br/>
                                         </div>
                                     </tr>
+
                                     <tr>
                                         <div className="form-group col-md-12">
-                                           <label for="file">Upload a image:</label>
-                                           <input type="file" name="file1"/>
-                                        </div>
-                                    </tr> 
-                                    <tr>
-                                        <div className="form-group col-md-12">
-                                                <button type="submit" className="btn btn-success btn-block" >Submit Details</button>
+                                                <button onClick={this.handleClick.bind(this)} className="btn btn-primary btn-block" >Submit Details</button>
                                         </div>
                                     </tr>
                                        
