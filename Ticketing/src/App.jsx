@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router ,Switch } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
-
+import { ToastContainer } from 'react-toastify';
 import StartHome from './views/start/startHome'
 import StartJourney from './views/start/startJourney'
 // import History from './views/history/history'
@@ -24,11 +24,12 @@ class App extends React.Component {
         return (
 
                 <div className="App">
+
                     <Router>
                     <div>
                         <div>
                             <Route path="/home"  component = {StartHome} />
-                            <Route path="/map"  component = {MapContainer} />
+                            {/*<Route path="/map"  component = {MapContainer} />*/}
                             <Route path="/startJourney"  component = {StartJourney} />
                             {/*<Route path="/Recharge" component = {Recharge} />*/}
                             {/*<Route path="/History" component = {History} />*/}

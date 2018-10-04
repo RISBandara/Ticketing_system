@@ -6,11 +6,10 @@ import DialogTitle from "@material-ui/core/es/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/es/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/es/DialogContentText/DialogContentText";
 import ReactDOM from "react-dom";
-import StartHome from "../start/startHome";
-import StartJourney from "../start/startJourney";
 import Manage from "../../Manage";
 import App from "../../App";
-import {BrowserRouter as Router} from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 export default class Login extends Component{
 
@@ -32,6 +31,18 @@ export default class Login extends Component{
         };
     }
 
+    notifySuccess = (message) => {
+        toast.success(message, {
+            position: toast.POSITION.BOTTOM_CENTER
+        });
+    };
+
+    notifyError = (message) => {
+        toast.error(message, {
+            position: toast.POSITION.BOTTOM_CENTER
+        });
+    };
+
     handleChange=(event)=>{
         this.setState({
             [event.target.name]:event.target.value
@@ -40,7 +51,7 @@ export default class Login extends Component{
 
     handleSignUp=(event)=>{
         if(this.state.newPassword!==this.state.confirmPassword){
-            // this.notifyError("Passwords does not match properly")
+            this.notifyError("Passwords does not match properly")
         }else{
             var user={
                 name:this.state.name,
@@ -53,13 +64,14 @@ export default class Login extends Component{
             }
             event.preventDefault();
             BaseUrl.post('users',user).then(res=>{
-                console.log("Success");
+                this.notifySuccess("Successfully Submitted.! To activate your account please recharge Rs.100");
                 this.handleClose();
                 localStorage.setItem("key",res.data["key"]);
                 localStorage.setItem("name",res.data["name"]);
                 localStorage.setItem("nic",res.data["nic"]);
-                ReactDOM.render(<App />, document.getElementById('root'));
-                // this.notifySuccess("Successfully Submitted.!")
+                localStorage.setItem("type",res.data["type"]);
+                // ReactDOM.render(<App />, document.getElementById('root'));
+
             }).catch(error=>{
 
             })
@@ -74,15 +86,22 @@ export default class Login extends Component{
         }
         event.preventDefault();
         BaseUrl.post('users/login',user).then(res=>{
-            console.log("Success");
+            this.notifySuccess("Successfully Submitted.!")
             this.handleClose();
             localStorage.setItem("key",res.data["key"]);
             localStorage.setItem("name",res.data["name"]);
             localStorage.setItem("nic",res.data["nic"]);
-            ReactDOM.render(<App/>, document.getElementById('root'));
-            // this.notifySuccess("Successfully Submitted.!")
+            if(res.data["role"]=="Passenger"){
+                ReactDOM.render(<App/>, document.getElementById('root'));
+            }else{
+                ReactDOM.render(<Manage/>, document.getElementById('root'));
+            }
+
         }).catch(error=>{
-            console.log(error.message);
+            if(error){
+                this.notifyError("Invalid credentials.");
+            }
+
         })
     }
 
@@ -101,7 +120,7 @@ export default class Login extends Component{
         const {name,nic,dob,type,username,password,newUsername,newPassword,confirmPassword,role}=this.state;
         return(
             <div>
-
+                <ToastContainer />
                     <div>
                         <img src={require('../../images/logo.jpg')} alt="" width="100%"/><br/><br/>
                         <div className="container">
