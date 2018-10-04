@@ -26,7 +26,6 @@ export default class OnJourney extends Component {
 
     }
 
-
     assignValues(res){
         this.setState({
             city:res.data["city"],
@@ -45,8 +44,6 @@ export default class OnJourney extends Component {
 
         })
     }
-
-
 
     render(){
         return(

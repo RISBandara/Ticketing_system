@@ -16,18 +16,16 @@ export default class endOnLoan extends Component{
     }
 
     componentWillMount(){
-        const values = queryString.parse(this.props.location.search)
-        this.setState({customerDetails:{name:values.customerName,Address:values.customerAddress,phone:values.phone,loanBl:values.loanBalance,journeyTot:values.journeyTotal}})
     }
 
     render(){
         return <div className="end">
             <Upper/>
             <div className="col-sm-12 UserHeader">
-                <center>
+               {/* <center>
                     <h2>{this.state.customerDetails.name}</h2>    
                     <p>{this.state.customerDetails.Address}</p>    
-                </center>
+                </center>*/}
             </div>
             <div className="col-sm-12 box">
             <table>

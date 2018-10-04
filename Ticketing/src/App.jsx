@@ -9,7 +9,7 @@ import StartJourney from './views/start/startJourney'
 import OnJourney from './views/start/onJourney'
 //
 import EndJourney from './views/end/endJourney'
-// import EndOnLoan from './views/end/endOnLoan'
+import EndOnLoan from './views/end/endOnLoan'
 import EndJourneyQR from './views/end/endJourneyQR'
 import {MapContainer} from "./views/login & account creation/map";
 //
@@ -34,7 +34,9 @@ class App extends React.Component {
                             {/*<Route path="/History" component = {History} />*/}
                             <Route path="/onJourney"  component = {OnJourney} />
                             <Route path="/end"  component = {EndJourney}/>
-                            {/*<Route path="/endOnLoan"  component = {EndOnLoan}/>*/}
+
+                            <Route path="/endOnLoan"  component = {EndOnLoan}/>
+
                             <Route path="/endQR" component = {EndJourneyQR}/>
                             {/*<Route path="/busfareMain"  component = {busfaremain} />*/}
                             {/*<Route path="/RouteHandler"  component = {RouteHandler} />*/}

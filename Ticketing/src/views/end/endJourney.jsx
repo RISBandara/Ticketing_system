@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Upper from '../upperImage'
-import queryString from 'query-string'
 
 import '../../css/end.css'
+import ReactDOM from "react-dom";
+import BaseUrl from "../../constatnts/base-url";
 
 export default class endJourney extends Component {
 
@@ -21,9 +22,22 @@ export default class endJourney extends Component {
     }
 
     componentWillMount() {
-        const values = queryString.parse(this.props.location.search)
+
+
+       /* BaseUrl.post('journey',user).then(res=>{
+            console.log("Success");
+            this.handleClose();
+            localStorage.setItem("key",res.data["key"]);
+            localStorage.setItem("name",res.data["name"]);
+            localStorage.setItem("nic",res.data["nic"]);
+            ReactDOM.render(<App />, document.getElementById('root'));
+            // this.notifySuccess("Successfully Submitted.!")
+        }).catch(error=>{
+
+        })*/
+
+
         this.setState({
-            customerDetails: values.user,
 
         });
 
@@ -38,8 +52,8 @@ export default class endJourney extends Component {
     onLoanClicked = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        this.props.history.push(`/endOnLoan?customerName=${this.state.customerDetails.name}&customerAddress=${this.state.customerDetails.Address}&phone=${this.state.customerDetails.phone}&loanBalance=${this.state.loanBalance}&journeyTotal=${this.state.journeyTotal}`);
-    }
+        this.props.history.push(`/endOnLoan`);
+    };
 
     Onloan = () => {
         if (this.state.loanBtn === true) {
