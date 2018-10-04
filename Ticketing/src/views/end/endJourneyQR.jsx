@@ -13,6 +13,7 @@ export default class endJourneyQR extends Component {
         }
     }
 
+
     componentWillMount(){
         const values = queryString.parse(this.props.location.search)
         this.setState({customerDetails:{name:values.customerName,Address:values.customerAddress,phone:values.phone}})

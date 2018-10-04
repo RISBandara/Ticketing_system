@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import Upper from '../upperImage'
 import '../../css/start.css'
+import {Link} from "react-router-dom";
 
 export default class StartHome extends Component{
 
@@ -37,14 +38,13 @@ export default class StartHome extends Component{
             <Upper/>
             <div className="col-sm-12 UserHeader">
                 <center>
-                    <h2>{this.state.customer.name}</h2>    
+                    <h2>{localStorage.getItem("name")}</h2>
                     <p>{this.state.customer.Address}</p>    
                 </center>
             </div>
-            <button className="btn col-sm-12 boxButton" onClick={event=>this.onStrtJourney(event)}>Start Journey</button>
-            <button className="btn col-sm-12 boxButton" onClick={event=>this.onRecharge(event)}>Recharge Account</button>
-            <button className="btn col-sm-12 boxButton" onClick={event=>this.onHistory(event)}>Journey History</button>
-           
+            <Link to="/startJourney" ><button className="btn col-sm-12 boxButton" >Start Journey</button></Link>
+            <button className="btn col-sm-12 boxButton" >Recharge Account</button>
+            <button className="btn col-sm-12 boxButton" >Journey History</button>
         </div>
     }
 }
