@@ -104,7 +104,7 @@ export default class OnJourney extends Component {
                     </table>
                 </div>
                 <center>
-                    <Link to="/end"><button className='btn btn-primary'>End Journey</button></Link>
+                    <Link to="/endQR"><button className='btn btn-primary'>End Journey</button></Link>
                 </center>
             </div>
         );
