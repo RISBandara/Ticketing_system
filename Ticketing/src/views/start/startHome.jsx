@@ -15,23 +15,7 @@ export default class StartHome extends Component{
         }
     }
 
-    onStrtJourney = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        this.props.history.push(`/startJourney?customerName=${this.state.customer.name}&customerAddress=${this.state.customer.Address}&phone=${this.state.customer.phone}`);
-    } 
 
-    onRecharge = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        this.props.history.push(`/Recharge?customerName=${this.state.customer.name}&customerAddress=${this.state.customer.Address}&phone=${this.state.customer.phone}`);
-    } 
-
-    onHistory = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        this.props.history.push(`/History?customerName=${this.state.customer.name}&customerAddress=${this.state.customer.Address}&phone=${this.state.customer.phone}`);
-    } 
 
     render(){
         return <div className="start">
