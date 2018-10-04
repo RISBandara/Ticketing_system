@@ -11,9 +11,10 @@
 
 .history .okButton{
 
-    background-color: gray;
+    background-color: skyblue;
     width: 40%;
-    margin: 0px 0px 0px 0px;
+    height: 40%;
+    margin: 1px 1px 1px 1px;
 
 }
 

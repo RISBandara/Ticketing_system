@@ -20,20 +20,20 @@ export default class History extends Component{
     
     render(){
         return(
-            <div className="history">
+            <div className="history well" >
             <div className="col-sm-12 UserHeader">
                 <center>
                     <h2>{this.state.customerDetails.name}</h2>    
                     <p>{this.state.customerDetails.Address}</p>    
                 </center>
             </div>
-            <div className="col-sm-12 boxHeader">
+            <div className="col-sm-10 boxHeader">
                 <center>
                 <p>Journey History</p>
                 </center>
                
             </div>
-            <div className="col-sm-12 box">
+            <div className="col-sm-10 box well" >
             <table>
                     <tr>
                         <td>Date: </td>
@@ -48,16 +48,42 @@ export default class History extends Component{
                         <td><b>SLIIT, Malabe</b></td>
                     </tr>
                     <tr>
+                        <td>Distance: </td>
+                        <td><b>10km</b></td>
+                    </tr>
+                    <tr>
                         <td>Total cost: </td>
                         <td><b>RS. 30</b></td>
                     </tr>
                 </table>
-                
+
+
 
             </div>
-
-            
-
+            <div className="col-sm-12 box well" >
+                <table>
+                    <tr>
+                        <td>Date: </td>
+                        <td><b>2018-09-18</b></td>
+                    </tr>
+                    <tr>
+                        <td>From: </td>
+                        <td><b>Kaduwela</b></td>
+                    </tr>
+                    <tr>
+                        <td>To: </td>
+                        <td><b>SLIIT, Malabe</b></td>
+                    </tr>
+                    <tr>
+                        <td>Distance: </td>
+                        <td><b>10km</b></td>
+                    </tr>
+                    <tr>
+                        <td>Total cost: </td>
+                        <td><b>RS. 30</b></td>
+                    </tr>
+                </table>
+            </div>
             <center>
             <div className="col-md-12">
                 <Link to='/home'>
