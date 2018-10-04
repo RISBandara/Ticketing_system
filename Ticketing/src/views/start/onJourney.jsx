@@ -2,16 +2,10 @@ import React , {Component} from 'react'
 import '../../css/onJourney.css'
 import Upper from '../upperImage'
 import {Link} from "react-router-dom";
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import BaseUrl from "../../constatnts/base-url";
+import GoogleMapReact from 'google-map-react';
 
-
-
- const style = {
-    width: '100%',
-    height: '200px',
-     position:'relative'
-}
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default class OnJourney extends Component {
 
     constructor(props){
@@ -21,7 +15,13 @@ export default class OnJourney extends Component {
             province:'',
             country:'',
             lat:'',
-            lon:''
+            lon:'',
+            center: {
+                lat: 59.95,
+                lng: 30.33
+
+            },
+            zoom: 11
         }
 
     }
@@ -33,7 +33,15 @@ export default class OnJourney extends Component {
             country:res.data["country"],
             lat:res.data["lat"],
             lon:res.data["lon"],
+            center:{
+                lat:res.data["lat"],
+                lng:res.data["lon"],
+            }
         })
+
+        localStorage.setItem("lat",this.state.lat);
+        localStorage.setItem("lon",this.state.lon);
+        localStorage.setItem("city",this.state.city);
     }
 
     componentWillMount(){
@@ -45,6 +53,10 @@ export default class OnJourney extends Component {
         })
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b35c1efbd2732826dcdebdc78b01ba1c0aca5967
     render(){
         return(
             <div className="onJourney">
@@ -52,17 +64,20 @@ export default class OnJourney extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-xs-12">
-                            {/*<Map  class="map" style={style} google={this.props.google} zoom={14}>*/}
-
-                                {/*<Marker onClick={this.onMarkerClick}*/}
-                                        {/*name={this.state.city} />*/}
-
-                                {/*<InfoWindow onClose={this.onInfoWindowClose}>*/}
-                                    {/*/!*<div>*!/*/}
-                                    {/*/!*<h1>{this.state.selectedPlace.name}</h1>*!/*/}
-                                    {/*/!*</div>*!/*/}
-                                {/*</InfoWindow>*/}
-                            {/*</Map>*/}
+                            <div style={{ height: '40vh', width: '100%' }}>
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: "AIzaSyBwYpmkJXqjGo5kTwjmpAgBhea--ZxPGMM" }}
+                                    defaultCenter={this.state.center}
+                                    center={this.state.center}
+                                    defaultZoom={this.state.zoom}
+                                >
+                                    <AnyReactComponent
+                                        lat={59.955413}
+                                        lng={30.337844}
+                                        text={'Kreyser Avrora'}
+                                    />
+                                </GoogleMapReact>
+                            </div>
                         </div>
                     </div>
                 </div><br/><br/>
@@ -80,26 +95,6 @@ export default class OnJourney extends Component {
                         </tr>
                     </table>
                 </div>
-                <div className="box box2">
-                    <table>
-                        <tr>
-                            <td><b>Next Stop</b></td>
-                        </tr>
-                        <tr>
-                            <td><b>Vihara Mawatha</b></td>
-                        </tr>  
-                    </table>
-                </div>
-                <div className="box box3">
-                <table>
-                        <tr>
-                            <td><b>Previous Stop</b></td>
-                        </tr>
-                        <tr>
-                            <td><b>Kothalawala</b></td>
-                        </tr>  
-                    </table>
-                </div>
                 <center>
                     <Link to="/endQR"><button className='btn btn-primary'>End Journey</button></Link>
                 </center>
@@ -108,6 +103,3 @@ export default class OnJourney extends Component {
     }
 }
 
-// export default GoogleApiWrapper({
-//     apiKey: ("AIzaSyBwYpmkJXqjGo5kTwjmpAgBhea--ZxPGMM")
-// })(OnJourney)
