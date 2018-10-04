@@ -1,40 +1,74 @@
 import React , {Component} from 'react'
+import {BrowserRouter as Router,Link} from 'react-router-dom'
 import '../../css/startJourney.css'
 import Upper from '../upperImage'
-import queryString from 'query-string' ;
+import ReactDOM from "react-dom";
+import StartHome from "./startHome";
+var QRCode = require('qrcode.react');
+
 
 
 export default class StartJourney extends Component {
     constructor(props){
         super(props)
         this.state= {
-            customerDetails:[]
+            customerDetails:[],
+            id:''
         }
     }
 
-    componentWillMount(){
-        const values = queryString.parse(this.props.location.search)
-        this.setState({customerDetails:{name:values.customerName,Address:values.customerAddress,phone:values.phone}})
+    componentDidMount(){
+        this.setState({ id: this.props.id });
+        console.log("id"+this.state.id);
     }
 
-    onScan = (event) =>{
-        event.preventDefault();
-        event.stopPropagation();
-        this.props.history.push(`/onJourney?customerName=${this.state.customerDetails.name}&customerAddress=${this.state.customerDetails.Address}&phone=${this.state.customerDetails.phone}`);
-    }
 
     render(){
         return(
             <div className="startJourney">
-            <Upper/>
-                <center className="">
-                    <h2>{this.state.customerDetails.name}</h2>    
-                    <p>{this.state.customerDetails.Address}</p>    
-                </center>             
-                <img src={require('../../images/QR.png')} className="qr" alt=""/>
-                <center>
-                    <button className='btn btn default' onClick={event=>this.onScan(event)}>SCAN</button>
-                </center>
+                    <div>
+                        <Upper/><br/>
+                        <div className="container">
+                            <div className="row" align="center">
+                                <div >
+                                    <QRCode className="col-md-12 col-xs-12 col-xs-offset-4 col-sm-12" value={localStorage.getItem("key")} />
+                                </div>
+                            </div>
+                        </div><br/>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-xs-3 col-xs-offset-2">
+                                    <label>Name</label>
+                                </div>
+                                <div className="col-xs-7">
+                                    <label>{localStorage.getItem("name")}</label>
+                                </div>
+                            </div><br/>
+                            <div className="row">
+                                <div className="col-xs-3 col-xs-offset-2">
+                                    <label>NIC</label>
+                                </div>
+                                <div className="col-xs-7">
+                                    <label>{localStorage.getItem("nic")}</label>
+                                </div>
+                            </div><br/>
+                            <div className="row">
+                                <div className="col-xs-3 col-xs-offset-2">
+                                    <label>Your PIN</label>
+                                </div>
+                                <div className="col-xs-7">
+                                    <label>{localStorage.getItem("key")}</label>
+                                </div>
+                            </div><br/>
+                            <div className="row" align="center">
+                                <div className="col-xs-12">
+                                    <Link to="/onJourney"> <button className="btn btn-primary">Scan & Start</button><br/><br/></Link>
+                                    <Link to="/home"><button className="btn btn-primary">Home</button></Link>
+                                </div>
+                            </div><br/>
+                        </div>
+                    </div>
+
             </div>
         );
     }

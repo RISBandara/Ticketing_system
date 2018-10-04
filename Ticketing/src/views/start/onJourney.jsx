@@ -1,46 +1,85 @@
 import React , {Component} from 'react'
 import '../../css/onJourney.css'
 import Upper from '../upperImage'
-import queryString from 'query-string' ;
+import {Link} from "react-router-dom";
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import BaseUrl from "../../constatnts/base-url";
 
 
+
+ const style = {
+    width: '100%',
+    height: '200px',
+     position:'relative'
+}
 export default class OnJourney extends Component {
+
     constructor(props){
         super(props)
-        this.state= {
-            customerDetails:[]
+        this.state={
+            city:'',
+            province:'',
+            country:'',
+            lat:'',
+            lon:''
         }
+
+    }
+
+
+    assignValues(res){
+        this.setState({
+            city:res.data["city"],
+            province:res.data["regionName"],
+            country:res.data["country"],
+            lat:res.data["lat"],
+            lon:res.data["lon"],
+        })
     }
 
     componentWillMount(){
-        const values = queryString.parse(this.props.location.search)
-        this.setState({customerDetails:{name:values.customerName,Address:values.customerAddress,phone:values.phone}})
+        BaseUrl.post('http://ip-api.com/json').then(res=>{
+        this.assignValues(res);
+            // this.notifySuccess("Successfully Submitted.!")
+        }).catch(error=>{
+
+        })
     }
 
-    onEnd = (event) =>{
-        event.preventDefault();
-        event.stopPropagation();
-        this.props.history.push(`/endQR?customerName=${this.state.customerDetails.name}&customerAddress=${this.state.customerDetails.Address}&phone=${this.state.customerDetails.phone}`);
-    }
+
 
     render(){
         return(
             <div className="onJourney">
             <Upper/>
-                <center>
-                    <h2>{this.state.customerDetails.name}</h2>    
-                    <p>{this.state.customerDetails.Address}</p>    
-                </center>             
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xs-12">
+                            {/*<Map  class="map" style={style} google={this.props.google} zoom={14}>*/}
+
+                                {/*<Marker onClick={this.onMarkerClick}*/}
+                                        {/*name={this.state.city} />*/}
+
+                                {/*<InfoWindow onClose={this.onInfoWindowClose}>*/}
+                                    {/*/!*<div>*!/*/}
+                                    {/*/!*<h1>{this.state.selectedPlace.name}</h1>*!/*/}
+                                    {/*/!*</div>*!/*/}
+                                {/*</InfoWindow>*/}
+                            {/*</Map>*/}
+                        </div>
+                    </div>
+                </div><br/><br/>
+
                 <div className="box box1">
                     <table>
                         <tr>
                             <td><b>OnBoard</b></td>
                         </tr>
                         <tr>
-                            <td><b>Started from kaduwela junction</b></td>
-                        </tr>  
+                            <td><b>{this.state.city}</b></td>
+                        </tr>
                         <tr>
-                            <td>At 1.53 PM</td>
+                            <td><b>{this.state.province}</b></td>
                         </tr>
                     </table>
                 </div>
@@ -65,9 +104,13 @@ export default class OnJourney extends Component {
                     </table>
                 </div>
                 <center>
-                    <button className='btn btn default' onClick={event=>this.onEnd(event)}>End Journey</button>
+                    <Link to="/end"><button className='btn btn-primary'>End Journey</button></Link>
                 </center>
             </div>
         );
     }
 }
+
+// export default GoogleApiWrapper({
+//     apiKey: ("AIzaSyBwYpmkJXqjGo5kTwjmpAgBhea--ZxPGMM")
+// })(OnJourney)
