@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import '../../css/recharge.css'
 // import Upper from '../upperImage'
 import queryString from 'query-string' ;
+import Getcode from './recharge';
 
 export default class Reacharge extends Component{
 
@@ -12,7 +13,6 @@ export default class Reacharge extends Component{
             payment : {credit : true, mobile: false}
         }
     }
-
 
     componentWillMount(){
         const values = queryString.parse(this.props.location.search)
@@ -41,17 +41,18 @@ export default class Reacharge extends Component{
         if(this.state.payment.credit){
             return <div>
                 <center>
-                    <h3>Credit</h3>
+                    <h3>Credit Card Payment</h3>
                         <div class="form-group">
-                            <label>Card No :</label>
+                            <label>Enter Card No :</label>
                             <input type="text" class="form-control single"  />
                         </div>
                 
                         <div class="form-group">
-                            <label >Card pin :</label>
+                            <label >Enter Card pin :</label>
                             <input type="text" class="form-control single" id="email" />
                         </div>
                         <button type="submit" style={{backgroundColor:"gray"}} class="btn btn-default">Submit</button>
+                        {/*<Getcode />*/}
                 </center>
             </div>
         }else{
@@ -83,19 +84,28 @@ export default class Reacharge extends Component{
     }
 
     render(){
+
+        const btn_css ={
+            backgroundColor : "black",
+            color : "white",
+        };
+        const header ={
+            backgroundColor : "black",
+            color : "white",
+        };
         return(
             <div className="recharge">
             
-                <div className="headerr">
+                <div className="header" style={header}>
                     <center>
-                        <h3 className="headerText">Account Recharge</h3>
+                        <h3 className="headerText" >ACCOUNT RECHARGE</h3>
                     </center>
                 </div>
                 <div className="col-sm-12 box">
                     <table>
                         <tr>
-                            <td> <b>Balance</b> </td>
-                            <td>: 60</td>
+                            <td> <b>Balance amount</b> </td>
+                            <td>: Rs.100.00</td>
                         </tr>
                         <tr>
                             <td> <b> Account Number</b> </td>
@@ -104,16 +114,20 @@ export default class Reacharge extends Component{
                     </table>
                  </div>
                 <center className="">
-                    <h2>{this.state.customerDetails.name}</h2>    
-                    <p>{this.state.customerDetails.address}</p>    
+                    <hr />
+                    <h2>Customer Name : {this.state.customerDetails.name}</h2>
+                    <p>Customer Address :{this.state.customerDetails.address}</p>
+                    <hr />
                 </center> 
                 <div>
 
                 </div>
                 <div className="">
                     <div className="btn-group groupButton" role="group" aria-label="Basic example">
-                        <button type="button" className="btn btn-secondary " onClick={(event)=>this.onCardClicks(event)} >Card Payment</button>
-                        <button type="button" className="btn btn-secondary" onClick={(event)=>this.onMobileClicks(event)} >Mobile Payment</button>
+                        <button type="button" className="btn btn-secondary " style={btn_css} onClick={(event)=>this.onCardClicks(event)} >Card Payment</button>
+                        <button type="button" className="btn btn-secondary" style={btn_css} onClick={(event)=>this.onMobileClicks(event)} >Mobile Payment</button>
+                        <button type="button" className="btn btn-secondary" style={btn_css} onClick={(event)=>this.onMobileClicks(event)} >Machine Payment</button>
+
                     </div>
                 </div>
                 {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import { BrowserRouter as Router ,Switch } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 
@@ -29,7 +29,7 @@ class App extends Component {
              
             <div>
                 <Switch>
-                 
+
                     <Route path="/home" exact static component = {Start} />
                     <Route path="/startJourney" exact static component = {startJourney} />
                     <Route path="/Recharge" exact static component = {Recharge} />
@@ -43,12 +43,12 @@ class App extends Component {
 
                   
                    <Route path="/busfareMain" exact static component = {busfaremain} />
-             
-                    
-                    
+
+
+
                     <Route path="/RouteHandler" exact static component = {RouteHandler} />
 
-                    
+
                     <Route path="/BusStopHandler" exact static component = {BusStopHandler} />
                     <Route path="/TMmain" exact static component = {TransportManagerMain} />
                 </Switch>
