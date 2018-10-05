@@ -18,9 +18,17 @@ export default class endJourneyQR extends Component {
             this.setState({
                 result: data,
             });
+/*
             alert(this.state.result);
+*/
             const arr = data.split(",");
-            alert(this.getDistanceFromLatLonInKm(arr[0], arr[1], 6.927079, 79.861244));
+            var distance=this.getDistanceFromLatLonInKm(localStorage.getItem("start_lat"),localStorage.getItem("start_long"),arr[1], arr[2]);
+            var now= new Date().toString();
+            localStorage.setItem("end",arr[0]);
+            localStorage.setItem("end_lat",arr[1]);
+            localStorage.setItem("end_long",arr[2]);
+            localStorage.setItem("end_time",now);
+            localStorage.setItem("distance",distance);
             this.props.history.push(`/end`);
         }
     }
@@ -51,24 +59,19 @@ export default class endJourneyQR extends Component {
     render() {
         return (
             <div className="startJourney">
-                <div className="" >
-                    End Journey
-                </div>
-
                 <Upper/>
-                <div className="col-sm-12 UserHeader">
+                <div>
                     <center>
-                        <h2>{localStorage.getItem("name")}</h2>
+                        <p>Align End point QR code within frame to scan and End journey</p>
                     </center>
-                </div>
-                <div className="col-md-8" style={{margin: 30}}>
+
                     <QrReader
                         delay={this.state.delay}
                         onError={this.handleError}
                         onScan={this.handleScan}
                         style={{width: '100%'}}
                     />
-                    <p>{this.state.result}</p>
+
                 </div>
 
             </div>

@@ -53,10 +53,9 @@ export default class OnJourney extends Component {
         })
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> b35c1efbd2732826dcdebdc78b01ba1c0aca5967
+
+
     render(){
         return(
             <div className="onJourney">

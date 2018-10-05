@@ -34,9 +34,17 @@ class App extends React.Component {
                             {/*<Route path="/Recharge" component = {Recharge} />*/}
                             {/*<Route path="/History" component = {History} />*/}
                             <Route path="/onJourney"  component = {OnJourney} />
+
+
+
                             <Route path="/end"  component = {EndJourney}/>
 
+
+
+
+
                             <Route path="/endOnLoan"  component = {EndOnLoan}/>
+
 
                             <Route path="/endQR" component = {EndJourneyQR}/>
                             {/*<Route path="/busfareMain"  component = {busfaremain} />*/}

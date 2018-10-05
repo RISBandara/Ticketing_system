@@ -11,7 +11,6 @@ export default class StartHome extends Component{
         this.state = {
             // login customer imformation goes here
             customer:{"name" : "John Doe" , "Address": "Colombo,Sri Lanka", "phone" : "07756984523"},
-            Account:{"balance" : "250"},
         }
     }
 
