@@ -4,7 +4,9 @@ export default class UpperImage extends Component{
     render(){
         return(
             <div>
-                <img src={require('../images/upper.png')} alt="" width="100%" style={{opacity:"0.5"}}/>
+
+                <img src={require('../images/bus1.jpg')} alt="" width="100%"/>
+
             </div>
         );
     }

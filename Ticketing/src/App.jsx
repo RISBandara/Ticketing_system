@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import { BrowserRouter as Router ,Switch } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import { ToastContainer } from 'react-toastify';
@@ -55,6 +55,7 @@ class App extends React.Component {
                         </div>
                     </div>
                     </Router>
+
                 </div>
 
         );
