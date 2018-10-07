@@ -87,11 +87,8 @@ export default class OnJourney extends Component {
                             <td><b>OnBoard</b></td>
                         </tr>
                         <tr>
-                            <td><b>{this.state.city}</b></td>
-                        </tr>
-                        <tr>
-                            <td><b>{this.state.province}</b></td>
-                        </tr>
+                            <td><b>{localStorage.getItem("start")}</b></td>
+                        </tr>s
                     </table>
                 </div>
                 <center>

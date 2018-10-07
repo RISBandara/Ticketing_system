@@ -38,7 +38,7 @@ export default class endOnLoan extends Component{
                     </tr>
                     <tr>
                         <td>Account Balance: </td>
-                        <td><b>-{localStorage.getItem("loan")}</b></td>
+                        <td><b>{localStorage.getItem("balance")}</b></td>
                     </tr>
                 </table>
                 <br/>

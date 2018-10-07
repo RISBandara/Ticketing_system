@@ -12,20 +12,16 @@ export default class endJourney extends Component {
         super(props);
 
         this.state = {
-            customerDetails: [],
-            journeyTotal: 20,
-            accBalance: 17,
-            loanBalance: 0,
             loanBtn: false,
             payCash: false,
             okBtn: false
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
 
         var journey = {
-            user: localStorage.getItem("username"),
+            user: localStorage.getItem("user"),
             startPoint: localStorage.getItem("start"),
             startPoint_lat: localStorage.getItem("start_lat"),
             startPoint_long: localStorage.getItem("start_long"),
@@ -35,7 +31,8 @@ export default class endJourney extends Component {
             endPoint_long: localStorage.getItem("end_long"),
             end_time: localStorage.getItem("end_time"),
             distance: localStorage.getItem("distance"),
-            fare:0.0
+            fare:0.0,
+            balance:0.0
         }
 
         console.log(journey);
@@ -44,23 +41,25 @@ export default class endJourney extends Component {
              console.log("Success");
 
              localStorage.setItem("fare",res.data["fare"]);
-/*
-*/
+             localStorage.setItem("balance",res.data["balance"]);
+
+             /*
+             */
              // this.notifySuccess("Successfully Submitted.!")
          }).catch(error=>{
 
          });
 
-         var username=localStorage.getItem("username");
+         var username=localStorage.getItem("user");
         BaseUrl.get('users/'+username).then(res=>{
             console.log("Success");
 
-            localStorage.setItem("balance",res.data["balance"]);
-            var loan = localStorage.getItem("fare")-localStorage.getItem("balance")
-            localStorage.setItem("loan",loan);
+            localStorage.setItem("user_balance",res.data["balance"]);
+            console.log(res.data["balance"]);
+
             /*
                          localStorage.setItem("fare",res.data["fare"]);
-            */
+           */
             // this.notifySuccess("Successfully Submitted.!")
         }).catch(error=>{
 
@@ -69,10 +68,10 @@ export default class endJourney extends Component {
 
         this.setState({});
 
-        if (localStorage.getItem("fare") > localStorage.getItem("balance")) {
+        if (localStorage.getItem("balance")<0.0) {
             this.setState({loanBtn: true});
             this.setState({payCash: true});
-            this.setState({loanBalance: localStorage.getItem("fare") - localStorage.getItem("balance")})
+            this.setState({loanBalance:localStorage.getItem("balance")})
         }
         else
             this.setState({okBtn: true});
@@ -136,7 +135,7 @@ export default class endJourney extends Component {
                     </tr>
                     <tr>
                         <td>Account Balance:</td>
-                        <td><b>{localStorage.getItem("balance")}</b></td>
+                        <td><b>{localStorage.getItem("user_balance")}</b></td>
                     </tr>
 
                 </table>
