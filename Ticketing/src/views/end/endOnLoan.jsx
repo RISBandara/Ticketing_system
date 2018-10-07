@@ -1,43 +1,44 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
 import Upper from '../upperImage'
-import queryString from 'query-string'
 
 import '../../css/end.css'
+import BaseUrl from "../../constatnts/base-url";
 
 export default class endOnLoan extends Component{
 
     constructor(props){
         super(props);
 
-        this.state = {
-            customerDetails:[]
-        }
     }
 
     componentWillMount(){
-        const values = queryString.parse(this.props.location.search)
-        this.setState({customerDetails:{name:values.customerName,Address:values.customerAddress,phone:values.phone,loanBl:values.loanBalance,journeyTot:values.journeyTotal}})
+        BaseUrl.get('users/'+localStorage.getItem("username")).then(res=>{
+            console.log("Success");
+            /*BaseUrl.put('users/'+localStorage.getItem("username"),res.data).then(res=>{
+                console.log("Success");
+            }).catch(error=>{
+            });*/
+
+        }).catch(error=>{
+
+        })
     }
 
     render(){
         return <div className="end">
             <Upper/>
             <div className="col-sm-12 UserHeader">
-                <center>
-                    <h2>{this.state.customerDetails.name}</h2>    
-                    <p>{this.state.customerDetails.Address}</p>    
-                </center>
             </div>
             <div className="col-sm-12 box">
             <table>
                     <tr>
                         <td>Journey Total: </td>
-                        <td><b>{this.state.customerDetails.journeyTot}</b></td>
+                        <td><b>{localStorage.getItem("fare")}</b></td>
                     </tr>
                     <tr>
                         <td>Account Balance: </td>
-                        <td><b>-{this.state.customerDetails.loanBl}</b></td>
+                        <td><b>-{localStorage.getItem("loan")}</b></td>
                     </tr>
                 </table>
                 <br/>
@@ -45,6 +46,9 @@ export default class endOnLoan extends Component{
                     <p>*Please note that you need to recharge your
                          account in order to get onboard next time</p>
                     {/* </center> */}
+                    <center>
+                    <p>Please Recharge your account</p>
+                    </center>
 
             </div>
 
@@ -52,11 +56,11 @@ export default class endOnLoan extends Component{
             <table>
                     <tr>
                         <td>From:   </td>
-                        <td> <b>Kaduwela</b> </td>
+                        <td> <b>{localStorage.getItem("start")}</b> </td>
                     </tr>
                     <tr>
                         <td>To:</td>
-                        <td><b>Sliit, Malabe</b></td>
+                        <td><b>{localStorage.getItem("end")}</b></td>
                     </tr>
                 </table>
 

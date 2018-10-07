@@ -1,73 +1,104 @@
 import React , {Component} from 'react'
 import '../../css/onJourney.css'
 import Upper from '../upperImage'
-import queryString from 'query-string' ;
+import {Link} from "react-router-dom";
+import BaseUrl from "../../constatnts/base-url";
+import GoogleMapReact from 'google-map-react';
 
-
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default class OnJourney extends Component {
+
     constructor(props){
         super(props)
-        this.state= {
-            customerDetails:[]
+        this.state={
+            city:'',
+            province:'',
+            country:'',
+            lat:'',
+            lon:'',
+            center: {
+                lat: 59.95,
+                lng: 30.33
+
+            },
+            zoom: 11
         }
+
+    }
+
+    assignValues(res){
+        this.setState({
+            city:res.data["city"],
+            province:res.data["regionName"],
+            country:res.data["country"],
+            lat:res.data["lat"],
+            lon:res.data["lon"],
+            center:{
+                lat:res.data["lat"],
+                lng:res.data["lon"],
+            }
+        })
+
+        localStorage.setItem("lat",this.state.lat);
+        localStorage.setItem("lon",this.state.lon);
+        localStorage.setItem("city",this.state.city);
     }
 
     componentWillMount(){
-        const values = queryString.parse(this.props.location.search)
-        this.setState({customerDetails:{name:values.customerName,Address:values.customerAddress,phone:values.phone}})
+        BaseUrl.post('http://ip-api.com/json').then(res=>{
+        this.assignValues(res);
+            // this.notifySuccess("Successfully Submitted.!")
+        }).catch(error=>{
+
+        })
     }
 
-    onEnd = (event) =>{
-        event.preventDefault();
-        event.stopPropagation();
-        this.props.history.push(`/endQR?customerName=${this.state.customerDetails.name}&customerAddress=${this.state.customerDetails.Address}&phone=${this.state.customerDetails.phone}`);
-    }
+
+
 
     render(){
         return(
             <div className="onJourney">
             <Upper/>
-                <center>
-                    <h2>{this.state.customerDetails.name}</h2>    
-                    <p>{this.state.customerDetails.Address}</p>    
-                </center>             
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xs-12">
+                            <div style={{ height: '40vh', width: '100%' }}>
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: "AIzaSyBwYpmkJXqjGo5kTwjmpAgBhea--ZxPGMM" }}
+                                    defaultCenter={this.state.center}
+                                    center={this.state.center}
+                                    defaultZoom={this.state.zoom}
+                                >
+                                    <AnyReactComponent
+                                        lat={59.955413}
+                                        lng={30.337844}
+                                        text={'Kreyser Avrora'}
+                                    />
+                                </GoogleMapReact>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
+
                 <div className="box box1">
                     <table>
                         <tr>
                             <td><b>OnBoard</b></td>
                         </tr>
                         <tr>
-                            <td><b>Started from kaduwela junction</b></td>
-                        </tr>  
-                        <tr>
-                            <td>At 1.53 PM</td>
-                        </tr>
-                    </table>
-                </div>
-                <div className="box box2">
-                    <table>
-                        <tr>
-                            <td><b>Next Stop</b></td>
+                            <td><b>{this.state.city}</b></td>
                         </tr>
                         <tr>
-                            <td><b>Vihara Mawatha</b></td>
-                        </tr>  
-                    </table>
-                </div>
-                <div className="box box3">
-                <table>
-                        <tr>
-                            <td><b>Previous Stop</b></td>
+                            <td><b>{this.state.province}</b></td>
                         </tr>
-                        <tr>
-                            <td><b>Kothalawala</b></td>
-                        </tr>  
                     </table>
                 </div>
                 <center>
-                    <button className='btn btn default' onClick={event=>this.onEnd(event)}>End Journey</button>
+                    <Link to="/endQR"><button className='btn btn-primary'>End Journey</button></Link>
                 </center>
             </div>
         );
     }
 }
+
