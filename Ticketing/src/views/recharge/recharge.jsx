@@ -60,8 +60,11 @@ export default class Reacharge extends Component{
       genetrateCode(){
         const random= GenerateRandomCode.NumCode(4);
         alert(random);
-        
+        localStorage.setItem("random",random);
     }
+
+    //To retrieve local storage 
+    // localStorage.getItem("random")
     
     componentWillMount(){
         const values = queryString.parse(this.props.location.search)
@@ -128,7 +131,7 @@ export default class Reacharge extends Component{
                         <input type="text" class="form-control single" id="amount" required/>
                     </div>
                    
-                    <button type="submit" style={{backgroundColor:"gray"}} className="btn btn-default getCode" onClick={this.genetrateCode.bind(this)}>Get Code</button>
+                    <button type="submit" className="btn btn-default getCode" onClick={this.genetrateCode.bind(this)}>Get Code</button>
                 </div>
 
                     <div className="col-sm-12 box" style={{height:"120px"}}>
@@ -180,7 +183,7 @@ export default class Reacharge extends Component{
                  </div>
                 <center className="">
                     <hr />
-                    <h2>Customer Name : {this.state.customerDetails.name}</h2>
+                    <h5>Customer Name : {this.state.customerDetails.name}</h5>
                     <p>Customer Address :{this.state.customerDetails.address}</p>
                     <hr />
                 </center> 
@@ -191,7 +194,7 @@ export default class Reacharge extends Component{
                     <div className="btn-group groupButton" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-secondary " style={btn_css} onClick={(event)=>this.onCardClicks(event)} >Card Payment</button>
                         <button type="button" className="btn btn-secondary" style={btn_css} onClick={(event)=>this.onMobileClicks(event)} >Mobile Payment</button>
-                        <button type="button" className="btn btn-secondary" style={btn_css} onClick={(event)=>this.onMobileClicks(event)} >Machine Payment</button>
+                        {/* <button type="button" className="btn btn-secondary" style={btn_css} onClick={(event)=>this.onMobileClicks(event)} >Machine Payment</button> */}
 
                     </div>
                 </div>
