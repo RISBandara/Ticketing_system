@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import Upper from '../upperImage'
 
 import '../../css/end.css'
-import ReactDOM from "react-dom";
 import BaseUrl from "../../constatnts/base-url";
 
 export default class endJourney extends Component {
