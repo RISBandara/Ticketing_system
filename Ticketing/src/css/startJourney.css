@@ -2,9 +2,13 @@
     height:250px;
     width:70%;
     margin:0px 0px 0px 55px;
+    /* border: 1px solid black; */
 }
 
 .startJourney .btn{
+    margin-top: 10px;
     width:40%;
-    background-color: gray  
+    background-color: gray;
+    border: 2px solid black;
+    color: white; 
 }
