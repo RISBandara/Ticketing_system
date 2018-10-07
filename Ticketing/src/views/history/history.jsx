@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
 import '../../css/history.css'
 import queryString from 'query-string'
+import axios from "axios/index";
 
 export default class History extends Component{
 
@@ -12,6 +13,8 @@ export default class History extends Component{
             customerDetails:[]
         }
     }
+
+
 
     componentWillMount(){
         const values = queryString.parse(this.props.location.search)
