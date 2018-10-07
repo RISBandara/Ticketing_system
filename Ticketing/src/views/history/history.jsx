@@ -34,22 +34,25 @@ export default class History extends Component{
                
             </div>
             <div className="col-sm-12 box">
-            <table>
+            <table className="table">
                     <tr>
                         <td>Date: </td>
                         <td><b>2018-09-18</b></td>
-                    </tr>
+                    </tr>            
+                   <br />
                     <tr>
                         <td>From: </td>
                         <td><b>Kaduwela</b></td>
                     </tr>
+                    <br />
                     <tr>
                         <td>To: </td>
                         <td><b>SLIIT, Malabe</b></td>
                     </tr>
+                    <br />
                     <tr>
                         <td>Total cost: </td>
-                        <td><b>RS. 30</b></td>
+                        <td><b>Rs. 30</b></td>
                     </tr>
                 </table>
                 

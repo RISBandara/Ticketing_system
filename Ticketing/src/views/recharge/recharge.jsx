@@ -57,6 +57,7 @@ export default class Reacharge extends Component{
         })
     }
 
+    //Generate random code
       genetrateCode(){
         const random= GenerateRandomCode.NumCode(4);
         alert(random);
@@ -137,14 +138,14 @@ export default class Reacharge extends Component{
                     <div className="col-sm-12 box" style={{height:"120px"}}>
                         <table>
                             <tr>
-                                <td>Please enter the 4 digit code to send to your phone to proceed recharge</td>
+                                <td><h5>Please enter the 4 digit code to send to your phone to proceed recharge</h5></td>
                             </tr>
                             <tr>
                                 <td><center> <input type="text" class="form-control single" id="code" /></center></td>
                             </tr>
                         </table>
                  </div>
-                 <button type="submit" style={{backgroundColor:"gray"}} class="btn btn-default" onClick={this.setData01.bind(this)}>Confirm payment</button>
+                 <button type="submit" class="btn btn-default" onClick={this.setData01.bind(this)}>Confirm payment</button>
             </div>
         }
     }
@@ -153,9 +154,12 @@ export default class Reacharge extends Component{
 
     render(){
 
+        //Inline css for components
         const btn_css ={
-            backgroundColor : "black",
+            backgroundColor : "grey",
+            border:"1px solid black",
             color : "white",
+            
         };
         const header ={
             backgroundColor : "black",
@@ -192,7 +196,7 @@ export default class Reacharge extends Component{
                 </div>
                 <div className="">
                     <div className="btn-group groupButton" role="group" aria-label="Basic example">
-                        <button type="button" className="btn btn-secondary " style={btn_css} onClick={(event)=>this.onCardClicks(event)} >Card Payment</button>
+                        <button type="button" className="btn btn-secondary" style={btn_css} onClick={(event)=>this.onCardClicks(event)} >Card Payment</button>
                         <button type="button" className="btn btn-secondary" style={btn_css} onClick={(event)=>this.onMobileClicks(event)} >Mobile Payment</button>
                         {/* <button type="button" className="btn btn-secondary" style={btn_css} onClick={(event)=>this.onMobileClicks(event)} >Machine Payment</button> */}
 

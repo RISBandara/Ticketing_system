@@ -1,8 +1,10 @@
 .history .box{
 
     background-color: rgba(219, 211, 211, 0.877);
+    border: 5px solid black;
     color:black;
     padding:10px;
+    /* margin-bottom: 100px; */
     width:90%;
     height: auto;
     margin:0px 0px 30px 18px;
@@ -12,6 +14,8 @@
 .history .okButton{
 
     background-color: gray;
+    border: 2px solid black;
+    color: white;
     width: 40%;
     margin: 0px 0px 0px 0px;
 
@@ -19,11 +23,19 @@
 
 .history .boxHeader{
 
-    background-color: rgba(44, 42, 42, 0.301);
-    color:black;
+    background-color: black;
+    color:white;
     padding:10px;
     width:90%;
-    height: 40px;
+    height: 50px;
     margin:0px 0px 30px 18px;
     font-size:20px;
+}
+
+.table{
+    padding-bottom: 10px;
+}
+
+.tr{
+    margin-bottom: 50px;
 }

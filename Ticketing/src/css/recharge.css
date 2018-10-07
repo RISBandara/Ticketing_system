@@ -10,6 +10,7 @@
 .recharge .groupButton{
     margin:0px 0px 0px 65px;
     padding:10px;
+    border-radius: 15px;
 }
 
 .recharge .groupButton button{
@@ -46,4 +47,14 @@
 .recharge .phoneText{
     margin:10px 0px 0px 50px;
 
+}
+
+btn btn-secondary{
+    background-color: grey;
+}
+
+btn btn-default{
+    background-color: grey;
+    color: white;
+    padding-bottom: 10px;
 }

@@ -1,4 +1,4 @@
-import React , {Component} from 'react'
+ import React , {Component} from 'react'
 import '../../css/startJourney.css'
 import Upper from '../upperImage'
 import queryString from 'query-string' ;

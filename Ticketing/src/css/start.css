@@ -1,3 +1,7 @@
+.start{
+    background-color: black;
+}
+
 .start .boxButton{
 
     background-color: grey;
@@ -19,6 +23,7 @@
 .start .UserHeader{
     color:black;
     border-top: 15px solid black;
+    color:white;
 
 }
 
