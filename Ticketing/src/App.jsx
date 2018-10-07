@@ -33,7 +33,11 @@ class App extends React.Component {
                             <Route path="/startJourney"  component = {StartJourney} />
                             {/*<Route path="/Recharge" component = {Recharge} />*/}
                             {/*<Route path="/History" component = {History} />*/}
+
+
                             <Route path="/onJourney"  component = {OnJourney} />
+
+
 
 
 

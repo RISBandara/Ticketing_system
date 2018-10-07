@@ -60,7 +60,8 @@ export default class Login extends Component{
                 type:this.state.type,
                 username:this.state.newUsername,
                 password:this.state.newPassword,
-                role:this.state.role
+                role:this.state.role,
+                balance:100.00
             }
             event.preventDefault();
             BaseUrl.post('users',user).then(res=>{
@@ -172,7 +173,7 @@ export default class Login extends Component{
 
                                     </div>
                                     <div className="form-group">
-                                        <label>NIC</label>
+                                        <label>NIC / Passport ID</label>
                                         <input type="text" name="nic" className="form-control" onChange={this.handleChange} value={nic.value} placeholder="Enter NIC"/>
 
                                     </div>

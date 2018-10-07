@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Link} from 'react-router-dom'
 import '../../css/startJourney.css'
 import Upper from '../upperImage'
 import QrReader from 'react-qr-reader';
+import BaseUrl from "../../constatnts/base-url";
 
 var QRCode = require('qrcode.react');
 
@@ -22,6 +23,21 @@ export default class StartJourney extends Component {
     componentDidMount() {
         this.setState({id: this.props.id});
         console.log("id" + this.state.id);
+
+        BaseUrl.get('users/' + localStorage.getItem("user")).then(res => {
+            console.log("Success");
+
+            var userBalance = res.data["balance"];
+
+            if (userBalance < 10.0) {
+                alert("Your balance is insufficient.Please Recharge before start journey.");
+                this.props.history.push(`/home`);
+            }
+
+        }).catch(error => {
+
+        })
+
     }
 
     handleScan(data) {
@@ -29,15 +45,15 @@ export default class StartJourney extends Component {
             this.setState({
                 result: data,
             });
-/*
-            alert(this.state.result);
-*/
+            /*
+                        alert(this.state.result);
+            */
             const arr = data.split(",");
-            var now= new Date().toString();
-            localStorage.setItem("start",arr[0]);
-            localStorage.setItem("start_lat",arr[1]);
-            localStorage.setItem("start_long",arr[2]);
-            localStorage.setItem("start_time",now);
+            var now = new Date().toString();
+            localStorage.setItem("start", arr[0]);
+            localStorage.setItem("start_lat", arr[1]);
+            localStorage.setItem("start_long", arr[2]);
+            localStorage.setItem("start_time", now);
             this.props.history.push(`/onJourney`);
         }
     }
@@ -101,7 +117,7 @@ export default class StartJourney extends Component {
                         <br/>
                         <div className="row" align="center">
                             <div className="col-xs-12">
-                               {/* <Link to="/onJourney">
+                                {/* <Link to="/onJourney">
                                     <button className="btn btn-primary">Scan & Start</button>
                                     <br/><br/></Link>*/}
                                 <Link to="/home">

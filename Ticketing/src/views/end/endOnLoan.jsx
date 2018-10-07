@@ -1,58 +1,71 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Upper from '../upperImage'
 
 import '../../css/end.css'
 import BaseUrl from "../../constatnts/base-url";
 
-export default class endOnLoan extends Component{
+export default class endOnLoan extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
     }
 
-    componentWillMount(){
-        BaseUrl.get('users/'+localStorage.getItem("username")).then(res=>{
+    componentDidMount() {
+       /* BaseUrl.get('users/' + localStorage.getItem("user")).then(res => {
             console.log("Success");
-            /*BaseUrl.put('users/'+localStorage.getItem("username"),res.data).then(res=>{
-                console.log("Success");
-            }).catch(error=>{
-            });*/
 
-        }).catch(error=>{
+            var user = {
+                name: res.data["name"],
+                nic: res.data["nic"],
+                dob: res.data["dob"],
+                type: res.data["type"],
+                username: res.data["username"],
+                password: res.data["password"],
+                role: res.data["role"],
+                balance: localStorage.getItem("balance")
+            }
+            console.log(user)
+            BaseUrl.post('users', user).then(res => {
+                console.log(res.data)
+            }).catch(error => {
 
-        })
+            })
+
+        }).catch(error => {
+
+        })*/
     }
 
-    render(){
+    render() {
         return <div className="end">
             <Upper/>
             <div className="col-sm-12 UserHeader">
             </div>
             <div className="col-sm-12 box">
-            <table>
+                <table>
                     <tr>
-                        <td>Journey Total: </td>
+                        <td>Journey Total:</td>
                         <td><b>{localStorage.getItem("fare")}</b></td>
                     </tr>
                     <tr>
-                        <td>Account Balance: </td>
+                        <td>Account Balance:</td>
                         <td><b>{localStorage.getItem("balance")}</b></td>
                     </tr>
                 </table>
                 <br/>
-                    <center>
+                <center>
                     <p>Please Recharge your account</p>
-                    </center>
+                </center>
 
             </div>
 
             <div className="col-sm-12 box">
-            <table>
+                <table>
                     <tr>
-                        <td>From:   </td>
-                        <td> <b>{localStorage.getItem("start")}</b> </td>
+                        <td>From:</td>
+                        <td><b>{localStorage.getItem("start")}</b></td>
                     </tr>
                     <tr>
                         <td>To:</td>
@@ -63,16 +76,13 @@ export default class endOnLoan extends Component{
             </div>
 
             <center>
-            <div className="col-md-12">
-                <Link to='/home'>
-                <button className="btn btn-default okButton center-block">Ok</button>
-                </Link>
-            </div>
+                <div className="col-md-12">
+                    <Link to='/home'>
+                        <button className="btn btn-default okButton center-block">Ok</button>
+                    </Link>
+                </div>
             </center>
-            
-            
 
-            
 
         </div>
     }
