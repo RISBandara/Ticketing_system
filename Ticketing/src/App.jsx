@@ -1,64 +1,65 @@
  import React, { Component } from 'react';
 import { BrowserRouter as Router ,Switch } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
-
-import Start from './views/start/startHome'
-import startJourney from './views/start/startJourney'
-import History from './views/history/history'
-import Recharge from './views/recharge/recharge'
-import Onjourney from './views/start/onJourney'
-
-import End from './views/end/endJourney'
+import { ToastContainer } from 'react-toastify';
+import StartHome from './views/start/startHome'
+import StartJourney from './views/start/startJourney'
+// import History from './views/history/history'
+// import Recharge from './views/recharge/recharge'
+import OnJourney from './views/start/onJourney'
+//
+import EndJourney from './views/end/endJourney'
 import EndOnLoan from './views/end/endOnLoan'
 import EndJourneyQR from './views/end/endJourneyQR'
+import {MapContainer} from "./views/login & account creation/map";
+//
+//
+// import TransportManagerMain from './views/TransportManager/TransportManagerMain'
+// import RouteHandler from './views/TransportManager/RouteHandler'
+// import busfaremain from './views/TransportManager/busfareMain'
+// import BusStopHandler from './views/TransportManager/BusStopHandler'
 
+class App extends React.Component {
+    render() {
+        return (
 
-import TransportManagerMain from './views/TransportManager/TransportManagerMain'
-import RouteHandler from './views/TransportManager/RouteHandler'
-import busfaremain from './views/TransportManager/busfareMain'
+                <div className="App">
 
-import BusStopHandler from './views/TransportManager/BusStopHandler'
-
-
-class App extends Component {
-  render() {
-    return (
-      <div>       
-      <Router>
-        <div >
-             
-            <div>
-                <Switch>
-
-                    <Route path="/home" exact static component = {Start} />
-                    <Route path="/startJourney" exact static component = {startJourney} />
-                    <Route path="/Recharge" exact static component = {Recharge} />
-                    <Route path="/History" exact static component = {History} />
-                    <Route path="/onJourney" exact static component = {Onjourney} />
-
-                  
-                    <Route path="/end" exact static component = {End}/>
-                    <Route path="/endOnLoan" exact static component = {EndOnLoan}/>
-                    <Route path="/endQR" exact static component = {EndJourneyQR}/>
-
-                  
-                   <Route path="/busfareMain" exact static component = {busfaremain} />
+                    <Router>
+                    <div>
+                        <div>
+                            <Route path="/home"  component = {StartHome} />
+                            {/*<Route path="/map"  component = {MapContainer} />*/}
+                            <Route path="/startJourney"  component = {StartJourney} />
+                            {/*<Route path="/Recharge" component = {Recharge} />*/}
+                            {/*<Route path="/History" component = {History} />*/}
+                            <Route path="/onJourney"  component = {OnJourney} />
 
 
 
-                    <Route path="/RouteHandler" exact static component = {RouteHandler} />
+                            <Route path="/end"  component = {EndJourney}/>
 
 
-                    <Route path="/BusStopHandler" exact static component = {BusStopHandler} />
-                    <Route path="/TMmain" exact static component = {TransportManagerMain} />
-                </Switch>
+
+
+
+                            <Route path="/endOnLoan"  component = {EndOnLoan}/>
+
+
+                            <Route path="/endQR" component = {EndJourneyQR}/>
+                            {/*<Route path="/busfareMain"  component = {busfaremain} />*/}
+                            {/*<Route path="/RouteHandler"  component = {RouteHandler} />*/}
+                            {/*<Route path="/BusStopHandler"  component = {BusStopHandler} />*/}
+                            {/*<Route path="/TMmain"  component = {TransportManagerMain} />*/}
+
+                        </div>
+                    </div>
+                    </Router>
+
                 </div>
-       
-      </div>
-      </Router>
-    </div>
-    );
-  }
+
+        );
+    }
 }
 
 export default App;
