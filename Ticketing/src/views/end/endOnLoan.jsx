@@ -41,10 +41,10 @@ export default class endOnLoan extends Component{
                     </tr>
                 </table>
                 <br/>
-                    <center>
+                    {/* <center> */}
                     <p>*Please note that you need to recharge your
                          account in order to get onboard next time</p>
-                    </center>
+                    {/* </center> */}
 
             </div>
 

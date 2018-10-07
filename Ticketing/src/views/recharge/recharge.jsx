@@ -73,6 +73,7 @@ export default class Reacharge extends Component{
     }
 
 
+    //Direct it to card payments when card is clicked
     onCardClicks = (event) =>{
         event.preventDefault();
         event.stopPropagation();
@@ -81,6 +82,7 @@ export default class Reacharge extends Component{
 
     }
 
+    //Direct it to Mobile payments when mobile payment is clicked
     onMobileClicks = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -90,7 +92,7 @@ export default class Reacharge extends Component{
     }
 
     
-
+    //Two seperate interfaces acts accordingly
     ShowPayment = () => {
         
         if(this.state.payment.credit){
@@ -165,6 +167,8 @@ export default class Reacharge extends Component{
             backgroundColor : "black",
             color : "white",
         };
+
+        //Main interface
         return(
             <div className="recharge">
             

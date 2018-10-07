@@ -69,7 +69,7 @@ export default class endJourney extends Component{
                     <p>{this.state.customerDetails.Address}</p>    
                 </center>
             </div>
-            <div className="col-sm-12 box">
+            <div className="col-sm-12 box center">
                 <table>
                     <tr>
                         <td>Journey Total: </td>
@@ -82,14 +82,17 @@ export default class endJourney extends Component{
                     </tr>
                     
                 </table>
+                <br />
                     
-                {
-                    this.Onloan()
-                }    
+                
 
             </div>
+            {
+                    this.Onloan()
+            }  
+            <br />
 
-            <div className="col-sm-12 box">
+            <div className="col-sm-12 box" style={{backgroundColor:"lightslategray"}}>
                 <table>
                     <tr>
                         <td>From:</td>
@@ -105,7 +108,7 @@ export default class endJourney extends Component{
             </div>
 
             <center>
-            <div className="col-md-12">
+            <div className="col-md-12" style={{backgroundColor:"lightslategray"}}>
                 
                     {
                         this.onOk()
