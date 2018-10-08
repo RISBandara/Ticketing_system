@@ -70,31 +70,31 @@ export default class RouteHandler_Add extends Component{
                             <legend><h4>Add new Bus Route Details</h4></legend>
                         </center>
 
-                            <div className="form-group row">
+                            <div className="form-group row center" style={{color:'black'}}>
                                 <table>
                                     <tr>
                                         <td>
-                                            <div className="form-group col-md-9" style={{width:"100%" , margin:"0px 0px 0px -10px"}} >
+                                            <div className="form-group col-md-8" style={{width:"100%" , margin:"0px 0px 0px -10px"}} >
                                                 <label htmlFor="exampleInputEmail1">Route No:</label><br/>
                                                 <input type="text" size={500} ref='routeno' className="form-control" required="required" id="pid" aria-describedby="emailHelp" placeholder="Enter Route No Here"/><br/>
                                             </div>
                                         </td>
                                     </tr>
                                      <tr>
-                                        <div className="form-group col-md-12">
+                                        <div className="form-group col-md-8"style={{width:"100%" , margin:"0px 0px 0px -10px"}}>
                                             <label htmlFor="exampleInputEmail1">Route Name:</label><br/>
-                                            <input type="text" required="required" ref='routename' className="form-control" id="pid" aria-describedby="emailHelp" placeholder="Enter Route Name Here" /><br/>
+                                            <input type="text" size={500} required="required" ref='routename' className="form-control" id="pid" aria-describedby="emailHelp" placeholder="Enter Route Name Here" /><br/>
                                         </div>
                                     </tr>
                                     <tr>
-                                        <div className="form-group col-md-12">
+                                        <div className="form-group col-md-9" style={{width:"100%" , margin:"0px 0px 0px -10px"}}>
                                             <label htmlFor="exampleInputEmail1">Route Distance:</label>
                                             <input type="text" required="required" className="form-control" id="pid" 
                                             aria-describedby="emailHelp" ref='routedistance' placeholder="Enter Route Distance Here" /><br/>
                                         </div>
                                     </tr>
                                     <tr>
-                                        <div className="form-group col-md-12">
+                                        <div className="form-group col-md-9"style={{width:"100%" , margin:"0px 0px 0px -10px"}}>
                                             <label htmlFor="exampleInputEmail1">Bus Fare:</label>
                                             <input type="text" required="required" ref='busfare' className="form-control" id="pid" 
                                             aria-describedby="emailHelp" placeholder="Enter Bus Fare Here" 
@@ -102,7 +102,7 @@ export default class RouteHandler_Add extends Component{
                                         </div>
                                     </tr>
                                     <tr>
-                                        <div className="form-group col-md-12">
+                                        <div className="form-group col-md-9"style={{width:"100%" , margin:"0px 0px 0px -10px"}}>
                                             <label htmlFor="exampleInputEmail1">Starting Point:</label>
                                             <input type="text" required="required" ref='startpoint' className="form-control" id="pid" 
                                             aria-describedby="emailHelp" placeholder="Enter Starting Point Here" 
@@ -110,7 +110,7 @@ export default class RouteHandler_Add extends Component{
                                         </div>
                                     </tr>
                                     <tr>
-                                        <div className="form-group col-md-12">
+                                        <div className="form-group col-md-9"style={{width:"100%" , margin:"0px 0px 0px -10px"}}>
                                             <label htmlFor="exampleInputEmail1">End Point:</label>
                                             <input type="text" required="required" ref='endpoint' className="form-control" id="pid" 
                                             aria-describedby="emailHelp" placeholder="Enter End Point Here" 
@@ -119,7 +119,7 @@ export default class RouteHandler_Add extends Component{
                                     </tr>
 
                                     <tr>
-                                        <div className="form-group col-md-12">
+                                        <div className="form-group col-md-9" style={{width:"100%" , margin:"0px 0px 0px -10px"}}>
                                                 <button onClick={this.handleClick.bind(this)} className="btn btn-primary btn-block" >Submit Details</button>
                                         </div>
                                     </tr>

@@ -5,7 +5,7 @@ export default class RouteHandler extends Component{
     render(){
         return(
           
-            <div className="F1_Stu_Home" style={{backgroundColor:'gray'}}>
+            <div className="F1_Stu_Home">
 
                 <center>
                     <h1>Ticketing System - Bus Route Details</h1>

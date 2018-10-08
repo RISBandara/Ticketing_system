@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import BusStopHandler_Add from "./BusStopHandler_Add"
-import Upper from '../upperImage';
+
 //implement BusStopHandler component
 export default class BusStopHandler extends Component{
 
@@ -14,7 +14,7 @@ export default class BusStopHandler extends Component{
                 <center>
                     <h1>Bus Halt Details</h1>
                 </center>
-                <Upper/>
+
 
                 <div className="col-md-12">
                     <div className="light">
